@@ -2,6 +2,7 @@
 package controller;
 
 import entity.RoomsEntity;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,9 +33,26 @@ public class HotelManagerControler {
     }            
     @RequestMapping(value = "search")
     public String listRoomSearch(Model model, String room, String numberBed, String searchStart, String searchEnd){
+        String typeRoom="";
+        int numberBedRoom =0;
+        if(room.equals("normal")){
+            typeRoom = "Room Normal";
+        }else if(room.equals("super")){
+            typeRoom = "Room Superior";
+        }else if(room.equals("deluxe")){
+            typeRoom = "Room Deluxe";
+        };
+        if(numberBed.equals("number1")){
+            numberBedRoom =Integer.parseInt("1");
+        }else if(numberBed.equals("number2")){
+            numberBedRoom =Integer.parseInt("2");
+        };
         
-        model.addAttribute(room, room);
-
+        LocalDate checkStart= LocalDate.parse(searchStart);
+        LocalDate checkEnd= LocalDate.parse(searchEnd);
+        List<RoomsEntity> roomsList = 
+                (List<RoomsEntity>) roomsRepository.searchRoomsBooking(typeRoom, numberBedRoom, checkStart, checkEnd);
+        model.addAttribute("roomsList", roomsList);
         return "roomsList";
     }
 }
