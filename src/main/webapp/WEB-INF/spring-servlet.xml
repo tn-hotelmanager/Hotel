@@ -12,7 +12,7 @@
             http://www.springframework.org/schema/mvc/spring-mvc.xsd
 ">
     <context:annotation-config/>
-    <context:component-scan base-package="controller, config, repository"/>
+    <context:component-scan base-package="entity, controller, config, repository"/>
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>

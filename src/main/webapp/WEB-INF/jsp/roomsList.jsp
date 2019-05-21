@@ -12,14 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <style>
-            table {border: 1px solid #000000; margin: 15px auto;}
-            h1{text-align: center; color: red; text-shadow: 2px 2px #ff0000;    }
-            h2{text-align: center; }
-            th, td{border: 1px solid #000000; text-align: center; padding: 10px;}
-            th{color: red;}
-            td{color: green;}
-            div{border: 1px solid #000000; margin: 0 auto; width: 20em; padding: 10px;}
+            <%@ include file="/WEB-INF/css/newcss.css"%>
         </style>
+        
     </head>
     <body>
         <h1>Rooms List</h1> 
@@ -63,8 +58,6 @@
                     <td>${room.roomDescription}</td>
                     <td>${room.roomPrice}</td>
                     <td>${room.roomNumberBed}</td>       
-                    <td><button onclick="location.href='${pageContext.request.contextPath}/edit/${room.roomId}' ">Booking</button></td>
-                    <td><button onclick="location.href='${pageContext.request.contextPath}/delete/${room.roomId}' ">Delete</button></td>
                 </tr>
             </c:forEach>
         </table>

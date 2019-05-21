@@ -1,0 +1,7 @@
+ table {border: 1px solid #000000; margin: 15px auto;}
+            h1{text-align: center; color: red; text-shadow: 2px 2px #ff0000;    }
+            h2{text-align: center; }
+            th, td{border: 1px solid #000000; text-align: center; padding: 10px;}
+            th{color: red;}
+            td{color: green;}
+            div{border: 1px solid #000000; margin: 0 auto; width: 20em; padding: 10px;}

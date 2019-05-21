@@ -4,6 +4,7 @@ package controller;
 import entity.RoomsEntity;
 import java.time.LocalDate;
 import java.util.List;
+import model.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,18 +42,21 @@ public class HotelManagerControler {
             typeRoom = "Room Superior";
         }else if(room.equals("deluxe")){
             typeRoom = "Room Deluxe";
-        };
+        }
         if(numberBed.equals("number1")){
             numberBedRoom =Integer.parseInt("1");
         }else if(numberBed.equals("number2")){
             numberBedRoom =Integer.parseInt("2");
-        };
+        }
         
         LocalDate checkStart= LocalDate.parse(searchStart);
         LocalDate checkEnd= LocalDate.parse(searchEnd);
+            Search search = new Search(room, numberBedRoom, checkStart, checkEnd);
         List<RoomsEntity> roomsList = 
                 (List<RoomsEntity>) roomsRepository.searchRoomsBooking(typeRoom, numberBedRoom, checkStart, checkEnd);
         model.addAttribute("roomsList", roomsList);
-        return "roomsList";
+        model.addAttribute("search", search);
+        return "searchRoomsList";
     }
+
 }
